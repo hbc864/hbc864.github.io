@@ -1,62 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Model Display</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-        #modelDisplay {
-            font-size: 1.25rem;
-            color: #666;
-        }
-    </style>
+    <title>Model Display</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Model Information</h1>
-        <div id="modelDisplay">Loading...</div>
-    </div>
-
+    <div id="display"></div>
     <script>
-        // Function to get URL parameters
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-
-        // Get the model parameter and update the display
-        window.addEventListener('load', function() {
-            const model = getUrlParameter('model');
-            const displayElement = document.getElementById('modelDisplay');
-            
-            if (model) {
-                displayElement.textContent = This is the page for model ${model};
-            } else {
-                displayElement.textContent = 'No model parameter specified. Add ?model=ABC to the URL.';
-            }
-        });
+        const urlParams = new URLSearchParams(window.location.search);
+        const model = urlParams.get('model');
+        document.getElementById('display').textContent = 
+            model ? This is the page for model ${model} : 'No model specified';
     </script>
 </body>
 </html>
