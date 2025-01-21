@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Model Display</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Query Parameter</title>
 </head>
 <body>
-    <div id="display"></div>
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const model = urlParams.get('model');
-        document.getElementById('display').textContent = 
-            model ? This is the page for model ${model} : 'No model specified';
-    </script>
+    <div id="content">
+        <h1>Model:</h1>
+        <p id="model"></p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
